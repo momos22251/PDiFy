@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project-specific outputs
+extracted_content/
