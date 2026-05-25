@@ -18,3 +18,11 @@ ENV/
 
 # Project-specific outputs
 extracted_content/
+
+# Antigravity CLI config
+.antigravitycli/
+
+# Packaging build artifacts
+build/
+dist/
+*.egg-info/

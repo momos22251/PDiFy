@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdify"
+version = "0.1.0"
+authors = [
+    { name = "momos22251", email = "momos22251@gmail.com" }
+]
+description = "Extract text layout and cohesive figures from PDF files"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Text Processing :: Markup",
+]
+dependencies = [
+    "pdfplumber>=0.10.0",
+    "pillow>=9.0.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/momos22251/PDiFy"
+"Bug Tracker" = "https://github.com/momos22251/PDiFy/issues"
+
+[project.scripts]
+pdify = "pdify.pdify:main"

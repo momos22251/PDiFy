@@ -566,7 +566,7 @@ def resolve_input_paths(input_args):
             
     return unique_paths
 
-if __name__ == "__main__":
+def main(argv=None):
     parser = argparse.ArgumentParser(description="Extract text layout and cohesive figures from PDF files.")
     parser.add_argument("--input", "-i", nargs="+", default=["./ALPAR.pdf"], help="Path to input PDF file(s), directory, or glob pattern (default: ./ALPAR.pdf).")
     parser.add_argument("--output", "-o", default="extracted_content", help="Base directory for extracted assets (default: extracted_content).")
@@ -592,12 +592,12 @@ if __name__ == "__main__":
     parser.add_argument("--reconstruct-paragraphs", action="store_true", default=True, help="Merge lines back into paragraphs (default: True).")
     parser.add_argument("--no-reconstruct-paragraphs", dest="reconstruct_paragraphs", action="store_false", help="Do not merge lines into paragraphs.")
     
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     
     pdf_paths = resolve_input_paths(args.input)
     if not pdf_paths:
         print(f"Error: No PDF files found matching input patterns: {args.input}", file=sys.stderr)
-        sys.exit(1)
+        return 1
         
     print(f"Found {len(pdf_paths)} PDF file(s) to process:")
     for p in pdf_paths:
@@ -630,7 +630,7 @@ if __name__ == "__main__":
             
     if not tasks:
         print("No pages to process.", file=sys.stderr)
-        sys.exit(1)
+        return 1
         
     print(f"Total pages to process: {len(tasks)}")
     
@@ -665,4 +665,8 @@ if __name__ == "__main__":
     print(f"Completed in {elapsed:.2f} seconds.")
     print(f"Successfully processed {success_count} / {len(tasks)} pages.")
     if failure_count > 0:
-        sys.exit(1)
+        return 1
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())
